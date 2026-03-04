@@ -1,8 +1,3 @@
----
-layout: default
-title: Home
----
-
 ## Vijayant Verma
 
 ## Service Design | UX Strategy | Advisor Experience
