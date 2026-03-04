@@ -1,4 +1,4 @@
-# Aditi Verma
+# Vijayant Verma
 
 ## Service Design | UX Strategy | Advisor Experience
 
