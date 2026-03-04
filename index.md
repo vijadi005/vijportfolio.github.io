@@ -6,11 +6,11 @@ I am a Service Designer and Product Strategy leader focused on transforming comp
 
 My work focuses on:
 
-• Advisor journey design  
+• User experience design  
 • Service blueprints  
 • Pain-point analysis and opportunity mapping  
 • Digital platform strategy  
-• Experience transformation for financial services
+• Experience digital transformation
 
 ---
 
