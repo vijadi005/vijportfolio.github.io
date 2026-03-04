@@ -43,5 +43,5 @@ Advisor Experience Transformation
 
 ## Contact
 
-LinkedIn: www.linkedin.com/in/yourprofile  
-Email: your@email.com
+LinkedIn: www.linkedin.com/in/vijay005
+Email: vijayant.verma@gmil.com
