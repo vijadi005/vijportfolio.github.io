@@ -1,0 +1,230 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="950" viewBox="0 0 1600 950">
+
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#f7f9fc"/>
+    <stop offset="100%" stop-color="#eef2f8"/>
+  </linearGradient>
+  <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+    <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#0b1f3318"/>
+  </filter>
+  <style>
+    .title { font: 700 34px Inter, Arial, sans-serif; fill:#122033; }
+    .subtitle { font: 400 15px Inter, Arial, sans-serif; fill:#516173; }
+    .section { font: 700 14px Inter, Arial, sans-serif; fill:#223247; letter-spacing:.5px; text-transform: uppercase; }
+    .phase { font: 700 15px Inter, Arial, sans-serif; fill:#203040; }
+    .small { font: 500 11px Inter, Arial, sans-serif; fill:#5b6b7d; }
+    .lane { font: 700 13px Inter, Arial, sans-serif; fill:#203040; }
+    .card { font: 600 12px Inter, Arial, sans-serif; fill:#162433; }
+    .card-small { font: 500 10px Inter, Arial, sans-serif; fill:#526173; }
+    .tag { font: 700 12px Inter, Arial, sans-serif; fill:#203040; }
+  </style>
+</defs>
+
+<rect x="0" y="0" width="1600" height="950" fill="url(#bg)"/>
+<text x="70" y="62" class="title">Advisor Experience Service Blueprint</text>
+<text x="70" y="88" class="subtitle">A portfolio-ready visualization of an end-to-end advisor journey, simplified from workshop and blueprint artifacts to highlight phases, touchpoints, and opportunity areas.</text>
+<rect x="70" y="108" rx="16" ry="16" width="116.8" height="30" fill="#ffffff" stroke="#d7dfeb"/>
+<text x="84" y="127" class="small" fill="#344455">Service design</text>
+<rect x="196.8" y="108" rx="16" ry="16" width="124.0" height="30" fill="#ffffff" stroke="#d7dfeb"/>
+<text x="210.8" y="127" class="small" fill="#344455">Journey mapping</text>
+<rect x="330.8" y="108" rx="16" ry="16" width="102.4" height="30" fill="#ffffff" stroke="#d7dfeb"/>
+<text x="344.8" y="127" class="small" fill="#344455">Blueprinting</text>
+<rect x="443.20000000000005" y="108" rx="16" ry="16" width="152.8" height="30" fill="#ffffff" stroke="#d7dfeb"/>
+<text x="457.20000000000005" y="127" class="small" fill="#344455">Opportunity framing</text>
+<rect x="606.0" y="108" rx="16" ry="16" width="95.2" height="30" fill="#ffffff" stroke="#d7dfeb"/>
+<text x="620.0" y="127" class="small" fill="#344455">Roadmapping</text>
+<rect x="54" y="129" rx="22" ry="22" width="1257" height="634" fill="#ffffff" filter="url(#shadow)"/>
+<rect x="70" y="145" width="175" height="74" fill="#DFF3F1" stroke="#d9e2ec"/>
+<text x="84" y="173" class="phase">Learning &amp; Discovery</text>
+<rect x="245" y="145" width="175" height="74" fill="#E8F4FB" stroke="#d9e2ec"/>
+<text x="259" y="173" class="phase">Onboarding &amp;</text>
+<text x="259" y="191" class="phase">Training</text>
+<rect x="420" y="145" width="175" height="74" fill="#F3EEFF" stroke="#d9e2ec"/>
+<text x="434" y="173" class="phase">Interest &amp; Enquiry</text>
+<rect x="595" y="145" width="175" height="74" fill="#FFF2D9" stroke="#d9e2ec"/>
+<text x="609" y="173" class="phase">Consideration &amp;</text>
+<text x="609" y="191" class="phase">Engagement</text>
+<rect x="770" y="145" width="175" height="74" fill="#E7F8EA" stroke="#d9e2ec"/>
+<text x="784" y="173" class="phase">Application &amp;</text>
+<text x="784" y="191" class="phase">Underwriting</text>
+<rect x="945" y="145" width="175" height="74" fill="#EAF0FF" stroke="#d9e2ec"/>
+<text x="959" y="173" class="phase">Policy Issuance</text>
+<rect x="1120" y="145" width="175" height="74" fill="#FDEBEE" stroke="#d9e2ec"/>
+<text x="1134" y="173" class="phase">Ongoing Service &amp;</text>
+<text x="1134" y="191" class="phase">Management</text>
+<line x1="70" y1="219" x2="70" y2="747" stroke="#e4eaf1" stroke-width="1"/>
+<line x1="245" y1="219" x2="245" y2="747" stroke="#e4eaf1" stroke-width="1"/>
+<line x1="420" y1="219" x2="420" y2="747" stroke="#e4eaf1" stroke-width="1"/>
+<line x1="595" y1="219" x2="595" y2="747" stroke="#e4eaf1" stroke-width="1"/>
+<line x1="770" y1="219" x2="770" y2="747" stroke="#e4eaf1" stroke-width="1"/>
+<line x1="945" y1="219" x2="945" y2="747" stroke="#e4eaf1" stroke-width="1"/>
+<line x1="1120" y1="219" x2="1120" y2="747" stroke="#e4eaf1" stroke-width="1"/>
+<line x1="1295" y1="219" x2="1295" y2="747" stroke="#e4eaf1" stroke-width="1"/>
+<rect x="70" y="219" width="1225" height="88" fill="#fbfcfe" stroke="#e4eaf1"/>
+<rect x="-75" y="219" width="145" height="88" fill="#ffffff" stroke="#e4eaf1"/>
+<circle cx="-48" cy="263" r="8" fill="#5DADE2"/>
+<text x="-30" y="268" class="lane">Customer actions</text>
+<rect x="70" y="307" width="1225" height="88" fill="#f7f9fc" stroke="#e4eaf1"/>
+<rect x="-75" y="307" width="145" height="88" fill="#ffffff" stroke="#e4eaf1"/>
+<circle cx="-48" cy="351" r="8" fill="#A569BD"/>
+<text x="-30" y="356" class="lane">Advisor actions</text>
+<rect x="70" y="395" width="1225" height="88" fill="#fbfcfe" stroke="#e4eaf1"/>
+<rect x="-75" y="395" width="145" height="88" fill="#ffffff" stroke="#e4eaf1"/>
+<circle cx="-48" cy="439" r="8" fill="#F5B7B1"/>
+<text x="-30" y="444" class="lane">Frontstage actions</text>
+<rect x="70" y="483" width="1225" height="88" fill="#f7f9fc" stroke="#e4eaf1"/>
+<rect x="-75" y="483" width="145" height="88" fill="#ffffff" stroke="#e4eaf1"/>
+<circle cx="-48" cy="527" r="8" fill="#F8C471"/>
+<text x="-30" y="532" class="lane">Digital touchpoints</text>
+<rect x="70" y="571" width="1225" height="88" fill="#fbfcfe" stroke="#e4eaf1"/>
+<rect x="-75" y="571" width="145" height="88" fill="#ffffff" stroke="#e4eaf1"/>
+<circle cx="-48" cy="615" r="8" fill="#F1948A"/>
+<text x="-30" y="620" class="lane">Support processes</text>
+<rect x="70" y="659" width="1225" height="88" fill="#f7f9fc" stroke="#e4eaf1"/>
+<rect x="-75" y="659" width="145" height="88" fill="#ffffff" stroke="#e4eaf1"/>
+<circle cx="-48" cy="703" r="8" fill="#48C9B0"/>
+<text x="-30" y="708" class="lane">Backstage actions</text>
+<text x="-75" y="169" class="section">Swimlanes</text>
+<rect x="80" y="233" rx="8" ry="8" width="126.0" height="28" fill="#D9EEF9" stroke="#d6dde8"/>
+<text x="88" y="245" class="card-small">Explore products</text>
+<rect x="80" y="321" rx="8" ry="8" width="122.5" height="28" fill="#E8DAEF" stroke="#d6dde8"/>
+<text x="88" y="333" class="card-small">Build awareness</text>
+<rect x="80" y="497" rx="8" ry="8" width="94.5" height="28" fill="#FCF3CF" stroke="#d6dde8"/>
+<text x="88" y="509" class="card-small">Website</text>
+<rect x="80" y="585" rx="8" ry="8" width="129.5" height="28" fill="#F5C6D6" stroke="#d6dde8"/>
+<text x="88" y="597" class="card-small">Marketing content</text>
+<rect x="80" y="673" rx="8" ry="8" width="129.5" height="28" fill="#CFF4ED" stroke="#d6dde8"/>
+<text x="88" y="685" class="card-small">Behavior insights</text>
+<rect x="255" y="233" rx="8" ry="8" width="143.5" height="28" fill="#D9EEF9" stroke="#d6dde8"/>
+<text x="263" y="245" class="card-small">Learn onboarding</text>
+<text x="263" y="256" class="card-small">path</text>
+<rect x="255" y="321" rx="8" ry="8" width="126.0" height="28" fill="#E8DAEF" stroke="#d6dde8"/>
+<text x="263" y="333" class="card-small">Register + train</text>
+<rect x="255" y="409" rx="8" ry="8" width="126.0" height="28" fill="#FADBD8" stroke="#d6dde8"/>
+<text x="263" y="421" class="card-small">Support guidance</text>
+<rect x="255" y="497" rx="8" ry="8" width="112.0" height="28" fill="#FCF3CF" stroke="#d6dde8"/>
+<text x="263" y="509" class="card-small">Training hub</text>
+<rect x="255" y="585" rx="8" ry="8" width="122.5" height="28" fill="#F5C6D6" stroke="#d6dde8"/>
+<text x="263" y="597" class="card-small">Docs + contacts</text>
+<rect x="255" y="673" rx="8" ry="8" width="133.0" height="28" fill="#CFF4ED" stroke="#d6dde8"/>
+<text x="263" y="685" class="card-small">Enablement content</text>
+<rect x="430" y="233" rx="8" ry="8" width="115.5" height="28" fill="#D9EEF9" stroke="#d6dde8"/>
+<text x="438" y="245" class="card-small">Ask questions</text>
+<rect x="430" y="321" rx="8" ry="8" width="115.5" height="28" fill="#E8DAEF" stroke="#d6dde8"/>
+<text x="438" y="333" class="card-small">Qualify needs</text>
+<rect x="430" y="409" rx="8" ry="8" width="133.0" height="28" fill="#FADBD8" stroke="#d6dde8"/>
+<text x="438" y="421" class="card-small">Respond to enquiry</text>
+<rect x="430" y="497" rx="8" ry="8" width="87.5" height="28" fill="#FCF3CF" stroke="#d6dde8"/>
+<text x="438" y="509" class="card-small">Forms</text>
+<rect x="523.5" y="497" rx="8" ry="8" width="91.0" height="28" fill="#FCF3CF" stroke="#d6dde8"/>
+<text x="531.5" y="509" class="card-small">Search</text>
+<rect x="430" y="585" rx="8" ry="8" width="115.5" height="28" fill="#F5C6D6" stroke="#d6dde8"/>
+<text x="438" y="597" class="card-small">Routing rules</text>
+<rect x="430" y="673" rx="8" ry="8" width="143.5" height="28" fill="#CFF4ED" stroke="#d6dde8"/>
+<text x="438" y="685" class="card-small">Channel</text>
+<text x="438" y="696" class="card-small">orchestration</text>
+<rect x="605" y="233" rx="8" ry="8" width="119.0" height="28" fill="#D9EEF9" stroke="#d6dde8"/>
+<text x="613" y="245" class="card-small">Review options</text>
+<rect x="605" y="321" rx="8" ry="8" width="119.0" height="28" fill="#E8DAEF" stroke="#d6dde8"/>
+<text x="613" y="333" class="card-small">Prepare quotes</text>
+<rect x="605" y="409" rx="8" ry="8" width="136.5" height="28" fill="#FADBD8" stroke="#d6dde8"/>
+<text x="613" y="421" class="card-small">Appointment</text>
+<text x="613" y="432" class="card-small">support</text>
+<rect x="605" y="497" rx="8" ry="8" width="108.5" height="28" fill="#FCF3CF" stroke="#d6dde8"/>
+<text x="613" y="509" class="card-small">Quote tools</text>
+<rect x="605" y="585" rx="8" ry="8" width="150.5" height="28" fill="#F5C6D6" stroke="#d6dde8"/>
+<text x="613" y="597" class="card-small">Cross-team</text>
+<text x="613" y="608" class="card-small">coordination</text>
+<rect x="605" y="673" rx="8" ry="8" width="112.0" height="28" fill="#CFF4ED" stroke="#d6dde8"/>
+<text x="613" y="685" class="card-small">Data capture</text>
+<rect x="780" y="233" rx="8" ry="8" width="133.0" height="28" fill="#D9EEF9" stroke="#d6dde8"/>
+<text x="788" y="245" class="card-small">Submit application</text>
+<rect x="780" y="321" rx="8" ry="8" width="119.0" height="28" fill="#E8DAEF" stroke="#d6dde8"/>
+<text x="788" y="333" class="card-small">Complete forms</text>
+<rect x="780" y="409" rx="8" ry="8" width="151" height="28" fill="#FADBD8" stroke="#d6dde8"/>
+<text x="788" y="421" class="card-small">Underwriting</text>
+<text x="788" y="432" class="card-small">touchpoints</text>
+<rect x="780" y="497" rx="8" ry="8" width="129.5" height="28" fill="#FCF3CF" stroke="#d6dde8"/>
+<text x="788" y="509" class="card-small">Application tools</text>
+<rect x="780" y="585" rx="8" ry="8" width="129.5" height="28" fill="#F5C6D6" stroke="#d6dde8"/>
+<text x="788" y="597" class="card-small">Manual follow-ups</text>
+<rect x="780" y="673" rx="8" ry="8" width="140.0" height="28" fill="#CFF4ED" stroke="#d6dde8"/>
+<text x="788" y="685" class="card-small">Eligibility +</text>
+<text x="788" y="696" class="card-small">review</text>
+<rect x="955" y="233" rx="8" ry="8" width="119.0" height="28" fill="#D9EEF9" stroke="#d6dde8"/>
+<text x="963" y="245" class="card-small">Receive policy</text>
+<rect x="955" y="321" rx="8" ry="8" width="136.5" height="28" fill="#E8DAEF" stroke="#d6dde8"/>
+<text x="963" y="333" class="card-small">Communicate</text>
+<text x="963" y="344" class="card-small">outcome</text>
+<rect x="955" y="409" rx="8" ry="8" width="136.5" height="28" fill="#FADBD8" stroke="#d6dde8"/>
+<text x="963" y="421" class="card-small">Issue +</text>
+<text x="963" y="432" class="card-small">fulfillment</text>
+<rect x="955" y="497" rx="8" ry="8" width="108.5" height="28" fill="#FCF3CF" stroke="#d6dde8"/>
+<text x="963" y="509" class="card-small">Policy docs</text>
+<rect x="955" y="585" rx="8" ry="8" width="136.5" height="28" fill="#F5C6D6" stroke="#d6dde8"/>
+<text x="963" y="597" class="card-small">Document</text>
+<text x="963" y="608" class="card-small">generation</text>
+<rect x="955" y="673" rx="8" ry="8" width="136.5" height="28" fill="#CFF4ED" stroke="#d6dde8"/>
+<text x="963" y="685" class="card-small">Back-office</text>
+<text x="963" y="696" class="card-small">handoff</text>
+<rect x="1130" y="233" rx="8" ry="8" width="140.0" height="28" fill="#D9EEF9" stroke="#d6dde8"/>
+<text x="1138" y="245" class="card-small">Manage service</text>
+<text x="1138" y="256" class="card-small">needs</text>
+<rect x="1130" y="321" rx="8" ry="8" width="150.5" height="28" fill="#E8DAEF" stroke="#d6dde8"/>
+<text x="1138" y="333" class="card-small">Support ongoing</text>
+<text x="1138" y="344" class="card-small">service</text>
+<rect x="1130" y="409" rx="8" ry="8" width="140.0" height="28" fill="#FADBD8" stroke="#d6dde8"/>
+<text x="1138" y="421" class="card-small">Service</text>
+<text x="1138" y="432" class="card-small">interactions</text>
+<rect x="1130" y="497" rx="8" ry="8" width="105.0" height="28" fill="#FCF3CF" stroke="#d6dde8"/>
+<text x="1138" y="509" class="card-small">Statements</text>
+<rect x="1130" y="585" rx="8" ry="8" width="112.0" height="28" fill="#F5C6D6" stroke="#d6dde8"/>
+<text x="1138" y="597" class="card-small">Case updates</text>
+<rect x="1130" y="673" rx="8" ry="8" width="143.5" height="28" fill="#CFF4ED" stroke="#d6dde8"/>
+<text x="1138" y="685" class="card-small">Retention +</text>
+<text x="1138" y="696" class="card-small">servicing</text>
+<path d="M105,263 C145,263 235,263 275,263" fill="none" stroke="#95a5b5" stroke-width="2"/>
+<circle cx="275" cy="263" r="3.5" fill="#95a5b5"/>
+<path d="M285,351 C325,351 420,351 460,351" fill="none" stroke="#95a5b5" stroke-width="2"/>
+<circle cx="460" cy="351" r="3.5" fill="#95a5b5"/>
+<path d="M460,351 C500,351 595,439 635,439" fill="none" stroke="#95a5b5" stroke-width="2"/>
+<circle cx="635" cy="439" r="3.5" fill="#95a5b5"/>
+<path d="M660,351 C700,351 790,351 830,351" fill="none" stroke="#95a5b5" stroke-width="2"/>
+<circle cx="830" cy="351" r="3.5" fill="#95a5b5"/>
+<path d="M845,351 C885,351 960,351 1000,351" fill="none" stroke="#95a5b5" stroke-width="2"/>
+<circle cx="1000" cy="351" r="3.5" fill="#95a5b5"/>
+<path d="M1000,351 C1040,351 1115,351 1155,351" fill="none" stroke="#95a5b5" stroke-width="2"/>
+<circle cx="1155" cy="351" r="3.5" fill="#95a5b5"/>
+<rect x="1335" y="129" rx="22" ry="22" width="250" height="552" fill="#ffffff" filter="url(#shadow)"/>
+<text x="1359" y="163" class="section">Priority opportunities</text>
+<rect x="1355" y="187" rx="14" ry="14" width="210" height="92" fill="#fafcff" stroke="#e4eaf1"/>
+<rect x="1371" y="201" rx="14" ry="14" width="88" height="28" fill="#D6F5ED" stroke="#27AE60"/>
+<text x="1399" y="220" class="tag">Now</text>
+<text x="1371" y="244" class="card-small">• Self-serve status</text>
+<text x="1371" y="258" class="card-small">• Unified entry points</text>
+<text x="1371" y="272" class="card-small">• Advisor notifications</text>
+<text x="1371" y="286" class="card-small">• Digital onboarding</text>
+<rect x="1355" y="291" rx="14" ry="14" width="210" height="92" fill="#fafcff" stroke="#e4eaf1"/>
+<rect x="1371" y="305" rx="14" ry="14" width="88" height="28" fill="#DCEEFF" stroke="#2980B9"/>
+<text x="1399" y="324" class="tag">Next</text>
+<text x="1371" y="348" class="card-small">• Case tracking</text>
+<text x="1371" y="362" class="card-small">• Search &amp; help</text>
+<text x="1371" y="376" class="card-small">• Cross-tool shortcuts</text>
+<rect x="1355" y="395" rx="14" ry="14" width="210" height="92" fill="#fafcff" stroke="#e4eaf1"/>
+<rect x="1371" y="409" rx="14" ry="14" width="88" height="28" fill="#EEE1FF" stroke="#8E44AD"/>
+<text x="1399" y="428" class="tag">Later</text>
+<text x="1371" y="452" class="card-small">• Proactive nudges</text>
+<text x="1371" y="466" class="card-small">• Assistant workflows</text>
+<text x="1371" y="480" class="card-small">• AI guidance</text>
+<rect x="1355" y="499" rx="14" ry="14" width="210" height="92" fill="#fafcff" stroke="#e4eaf1"/>
+<rect x="1371" y="513" rx="14" ry="14" width="88" height="28" fill="#FFE2EC" stroke="#D81B60"/>
+<text x="1399" y="532" class="tag">Not a focus</text>
+<text x="1371" y="556" class="card-small">• Low-value legacy tasks</text>
+<text x="1371" y="570" class="card-small">• Duplicate handoffs</text>
+<rect x="70" y="781" rx="18" ry="18" width="1460" height="120" fill="#122033" filter="url(#shadow)"/>
+<text x="96" y="813" style="font:700 18px Inter, Arial, sans-serif; fill:#ffffff;">Portfolio takeaway</text>
+<text x="96" y="841" style="font:400 15px Inter, Arial, sans-serif; fill:#d9e6f2;">This visualization showcases how service blueprinting can align customer behavior, advisor workflows, digital</text>
+<text x="96" y="863" style="font:400 15px Inter, Arial, sans-serif; fill:#d9e6f2;">touchpoints, support processes, and backstage operations into a single strategic view. It helps reveal friction, clarify</text>
+<text x="96" y="885" style="font:400 15px Inter, Arial, sans-serif; fill:#d9e6f2;">ownership, and prioritize initiatives across the end-to-end experience.</text>
+</svg>
