@@ -1,1 +1,877 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Advisor Journey Case Study — Vijayant Verma</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f5f3ee;
+      --ink: #1a1814;
+      --muted: #9a9690;
+      --accent: #c8a96e;
+      --line: #dedad4;
+      --white: #fdfcfa;
+      --soft: #f1ede7;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Mono', monospace;
+      background: var(--bg);
+      color: var(--ink);
+      font-size: 13px;
+      line-height: 1.8;
+      cursor: none;
+    }
+
+    a { color: inherit; }
+
+    .cursor {
+      position: fixed;
+      width: 8px; height: 8px;
+      background: var(--ink);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: transform 0.1s, width 0.2s, height 0.2s, background 0.2s;
+    }
+    .cursor-ring {
+      position: fixed;
+      width: 32px; height: 32px;
+      border: 1px solid var(--ink);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9998;
+      transform: translate(-50%, -50%);
+      transition: transform 0.15s ease-out, width 0.3s, height 0.3s, opacity 0.3s;
+      opacity: 0.4;
+    }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 28px 52px;
+      mix-blend-mode: multiply;
+      background: linear-gradient(to bottom, rgba(245,243,238,0.96), rgba(245,243,238,0.72), transparent);
+      backdrop-filter: blur(10px);
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 300;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      color: var(--ink);
+    }
+
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--ink); }
+
+    section { padding: 100px 52px; }
+
+    #hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1.25fr 0.9fr;
+      gap: 40px;
+      padding: 0 52px;
+      align-items: center;
+      position: relative;
+    }
+
+    .hero-left {
+      padding-top: 70px;
+      opacity: 0;
+      animation: fadeUp 1s ease 0.2s forwards;
+    }
+
+    .hero-eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 24px;
+      display: flex; align-items: center; gap: 14px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 32px; height: 1px;
+      background: var(--muted);
+    }
+
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(50px, 6vw, 84px);
+      font-weight: 300;
+      line-height: 1.02;
+      letter-spacing: -0.01em;
+      margin-bottom: 22px;
+    }
+
+    .hero-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(24px, 2.8vw, 38px);
+      font-weight: 300;
+      color: var(--ink);
+      margin-bottom: 28px;
+      line-height: 1.2;
+    }
+
+    .hero-subtitle em,
+    h2 em,
+    .stat-large em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .hero-desc {
+      max-width: 720px;
+      color: var(--muted);
+      line-height: 1.9;
+      margin-bottom: 32px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 22px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      text-decoration: none;
+      color: var(--ink);
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--ink);
+      padding-bottom: 4px;
+      transition: gap 0.25s, color 0.2s, border-color 0.2s;
+    }
+    .btn:hover { gap: 18px; color: var(--accent); border-color: var(--accent); }
+    .btn-solid {
+      background: var(--ink);
+      color: var(--bg);
+      padding: 14px 18px;
+      border: 1px solid var(--ink);
+      text-decoration: none;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      transition: transform .25s ease, background .25s ease, color .25s ease;
+    }
+    .btn-solid:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: var(--white);
+      transform: translateY(-2px);
+    }
+
+    .hero-right {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding-top: 60px;
+      opacity: 0;
+      animation: fadeUp 1s ease 0.45s forwards;
+    }
+
+    .hero-panel {
+      width: min(430px, 100%);
+      background: var(--white);
+      border: 1px solid var(--line);
+      padding: 28px;
+      position: relative;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.04);
+    }
+
+    .panel-label {
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    .panel-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .panel-card {
+      background: var(--soft);
+      border: 1px solid var(--line);
+      padding: 18px;
+      min-height: 100px;
+    }
+
+    .panel-card .k {
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .panel-card .v {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      line-height: 1;
+      font-weight: 300;
+    }
+
+    .panel-card .t {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.6;
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 40px; left: 52px;
+      display: flex; align-items: center; gap: 12px;
+      color: var(--muted);
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      opacity: 0;
+      animation: fadeUp 1s ease 0.9s forwards;
+    }
+
+    .scroll-line {
+      width: 1px; height: 40px;
+      background: var(--line);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .scroll-line::after {
+      content: '';
+      position: absolute;
+      top: -40px; left: 0;
+      width: 1px; height: 40px;
+      background: var(--muted);
+      animation: scrollDown 1.5s ease infinite;
+    }
+
+    .section-header {
+      display: flex; align-items: baseline; gap: 20px;
+      margin-bottom: 54px;
+    }
+    .section-num {
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+    }
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(34px, 4vw, 52px);
+      font-weight: 300;
+      letter-spacing: -0.01em;
+    }
+    .section-line {
+      flex: 1;
+      height: 1px;
+      background: var(--line);
+      margin-bottom: 6px;
+    }
+
+    .intro-grid,
+    .two-col,
+    .metric-grid,
+    .initiative-grid,
+    .phase-grid,
+    .summary-grid {
+      display: grid;
+      gap: 28px;
+    }
+
+    .intro-grid,
+    .two-col,
+    .summary-grid { grid-template-columns: 1.1fr 0.9fr; }
+
+    .card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      padding: 28px;
+    }
+
+    .card h3,
+    .step-title,
+    .initiative-title,
+    .phase-title,
+    .metric-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      font-weight: 300;
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+
+    .eyebrow {
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+
+    .card p,
+    .metric-copy,
+    .initiative-copy,
+    .phase-copy,
+    .step-copy,
+    .summary-copy {
+      color: var(--muted);
+      line-height: 1.9;
+    }
+
+    .list {
+      display: grid;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .list-item {
+      border-top: 1px solid var(--line);
+      padding-top: 12px;
+      color: var(--muted);
+    }
+
+    .list-item strong { color: var(--ink); font-weight: 400; }
+
+    #challenge, #initiatives, #impact { background: var(--white); }
+    #process { background: var(--bg); }
+    #principles { background: var(--ink); color: var(--bg); }
+    #principles h2, #principles .step-title, #principles .initiative-title { color: var(--bg); }
+    #principles .section-line { background: rgba(255,255,255,0.1); }
+    #principles .section-num, #principles .step-copy, #principles .initiative-copy { color: rgba(245,243,238,0.68); }
+    #principles .step { border-color: rgba(255,255,255,0.1); background: rgba(255,255,255,0.02); }
+
+    .metric-grid { grid-template-columns: repeat(4, 1fr); }
+    .metric {
+      border-top: 1px solid var(--line);
+      padding-top: 18px;
+    }
+    .metric-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 46px;
+      font-weight: 300;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+
+    .phase-grid { grid-template-columns: repeat(4, 1fr); }
+    .phase {
+      background: var(--white);
+      border: 1px solid var(--line);
+      padding: 24px;
+      min-height: 260px;
+    }
+    .phase-no, .step-no {
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 18px;
+    }
+
+    .step-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .step {
+      padding: 26px;
+      border: 1px solid var(--line);
+      background: var(--white);
+    }
+
+    .initiative-grid { grid-template-columns: repeat(3, 1fr); }
+    .initiative {
+      background: var(--soft);
+      border: 1px solid var(--line);
+      padding: 24px;
+      transition: transform .3s ease;
+    }
+    .initiative:hover { transform: translateY(-4px); }
+
+    .quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(28px, 3vw, 42px);
+      line-height: 1.25;
+      font-weight: 300;
+      max-width: 900px;
+    }
+    .quote em { color: var(--accent); font-style: italic; }
+
+    .banner {
+      padding: 28px;
+      border: 1px solid var(--line);
+      background: linear-gradient(135deg, var(--white), var(--soft));
+    }
+
+    .summary-grid .card:first-child { background: var(--soft); }
+
+    footer {
+      padding: 32px 52px;
+      background: var(--white);
+      border-top: 1px solid var(--line);
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .footer-copy {
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+    }
+    .footer-back {
+      font-size: 11px;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .footer-back:hover { color: var(--ink); }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes scrollDown {
+      0% { top: -40px; }
+      100% { top: 100%; }
+    }
+
+    @media (max-width: 1100px) {
+      .metric-grid, .phase-grid, .initiative-grid, .step-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 900px) {
+      nav, section, footer { padding-left: 24px; padding-right: 24px; }
+      #hero { grid-template-columns: 1fr; padding: 120px 24px 60px; }
+      .hero-right { justify-content: flex-start; padding-top: 20px; }
+      .intro-grid, .two-col, .summary-grid { grid-template-columns: 1fr; }
+      .scroll-hint { left: 24px; }
+      .nav-links { gap: 16px; flex-wrap: wrap; justify-content: flex-end; }
+    }
+
+    @media (max-width: 700px) {
+      .metric-grid, .phase-grid, .initiative-grid, .step-grid, .panel-grid { grid-template-columns: 1fr; }
+      nav { align-items: flex-start; gap: 12px; flex-direction: column; }
+      body { cursor: auto; }
+      .cursor, .cursor-ring { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <nav>
+    <a class="nav-logo" href="#hero">Vijayant Verma</a>
+    <ul class="nav-links">
+      <li><a href="#overview">Overview</a></li>
+      <li><a href="#challenge">Challenge</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#initiatives">Initiatives</a></li>
+      <li><a href="#impact">Impact</a></li>
+    </ul>
+  </nav>
+
+  <section id="hero">
+    <div class="hero-left">
+      <div class="hero-eyebrow">Case Study</div>
+      <h1>Advisor Journey <em>Transformation</em></h1>
+      <div class="hero-subtitle">Designing a connected advisor experience across onboarding, sales, servicing, and growth.</div>
+      <p class="hero-desc">
+        This case study translates a complex advisor ecosystem into a clear, premium portfolio narrative. It focuses on the fragmented insurance and wealth advisor experience, surfacing business goals, advisor objectives, systemic pain points, service opportunities, and a forward-looking set of key initiatives for an integrated digital journey.
+      </p>
+      <div class="hero-actions">
+        <a class="btn-solid" href="#overview">Explore case study</a>
+        <a class="btn" href="#initiatives">View key initiatives →</a>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="hero-panel">
+        <div class="panel-label">Case Snapshot</div>
+        <div class="panel-grid">
+          <div class="panel-card">
+            <div class="k">Focus</div>
+            <div class="v">E2E</div>
+            <div class="t">Advisor journey across discovery, onboarding, application, servicing, and growth.</div>
+          </div>
+          <div class="panel-card">
+            <div class="k">Lens</div>
+            <div class="v">UX + Service</div>
+            <div class="t">Journey mapping, service blueprinting, ecosystem design, and roadmap thinking.</div>
+          </div>
+          <div class="panel-card">
+            <div class="k">Core Problem</div>
+            <div class="v">Fragmentation</div>
+            <div class="t">Too many tools, manual handoffs, unclear status, and inconsistent support.</div>
+          </div>
+          <div class="panel-card">
+            <div class="k">Outcome</div>
+            <div class="v">North Star</div>
+            <div class="t">A more unified, proactive, trackable, and advisor-first digital ecosystem.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="scroll-hint">
+      <div class="scroll-line"></div>
+      Scroll
+    </div>
+  </section>
+
+  <section id="overview">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <h2>Overview</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="intro-grid reveal">
+      <div class="card">
+        <div class="eyebrow">Context</div>
+        <h3>Why this work mattered</h3>
+        <p>
+          Advisors were navigating a fragmented landscape of portals, tools, forms, support channels, and manual processes. This increased effort, introduced avoidable errors, and weakened confidence in Manulife as an easy partner to do business with.
+        </p>
+        <div class="list">
+          <div class="list-item"><strong>Business need:</strong> Improve ease of doing business, strengthen advisor retention, and support growth across insurance and wealth journeys.</div>
+          <div class="list-item"><strong>User need:</strong> Reduce complexity, get faster answers, complete tasks with confidence, and stay informed without constant follow-up.</div>
+          <div class="list-item"><strong>Design opportunity:</strong> Reframe disconnected tools into a coherent end-to-end service experience.</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="eyebrow">My role</div>
+        <h3>Service design and experience strategy</h3>
+        <div class="list">
+          <div class="list-item"><strong>Mapped</strong> advisor journeys, tasks, ecosystems, and supporting backstage processes.</div>
+          <div class="list-item"><strong>Synthesized</strong> pain points, patterns, and opportunity areas across advisor-facing interactions.</div>
+          <div class="list-item"><strong>Defined</strong> future-state concepts, principles, and initiatives for a more seamless digital advisor experience.</div>
+          <div class="list-item"><strong>Framed</strong> the work as a case study narrative suitable for a portfolio and stakeholder storytelling.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="challenge">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <h2>The challenge</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="banner reveal" style="margin-bottom: 28px;">
+      <div class="quote">How might we create an <em>integrated advisor journey</em> that reduces friction, improves confidence, and helps advisors bring in, manage, and grow business more effectively?</div>
+    </div>
+
+    <div class="two-col reveal">
+      <div class="card">
+        <div class="eyebrow">Business goals</div>
+        <h3>What the organization needed</h3>
+        <div class="list">
+          <div class="list-item"><strong>Increase adoption</strong> of digital tools and reduce dependence on manual, paper-based workarounds.</div>
+          <div class="list-item"><strong>Reduce NIGOs and processing errors</strong> through better guidance, validation, and simpler workflows.</div>
+          <div class="list-item"><strong>Improve advisor satisfaction</strong> by creating a more intuitive, transparent, and responsive experience.</div>
+          <div class="list-item"><strong>Enable growth</strong> through better product discovery, smarter guidance, and improved cross-sell opportunities.</div>
+          <div class="list-item"><strong>Protect relationships</strong> so advisors are less likely to shift business to competitors.</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="eyebrow">Advisor objectives</div>
+        <h3>What advisors were trying to do</h3>
+        <div class="list">
+          <div class="list-item"><strong>Look competent in front of clients</strong> and follow through on promises without delays or uncertainty.</div>
+          <div class="list-item"><strong>Find the right tools quickly</strong> without navigating multiple systems and repeated logins.</div>
+          <div class="list-item"><strong>Submit business correctly the first time</strong> and avoid preventable back-and-forth.</div>
+          <div class="list-item"><strong>Track status clearly</strong> for applications, requests, servicing, and in-force changes.</div>
+          <div class="list-item"><strong>Stay informed and supported</strong> through onboarding, training, service, and ongoing business growth.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="metric-grid reveal" style="margin-top: 38px;">
+      <div class="metric">
+        <div class="metric-number">01</div>
+        <div class="metric-title">Fragmented ecosystem</div>
+        <div class="metric-copy">Multiple portals, duplicate tools, inconsistent navigation, and disconnected experiences.</div>
+      </div>
+      <div class="metric">
+        <div class="metric-number">02</div>
+        <div class="metric-title">Manual processes</div>
+        <div class="metric-copy">Too many handoffs, repeated data entry, unclear ownership, and paper fallback.</div>
+      </div>
+      <div class="metric">
+        <div class="metric-number">03</div>
+        <div class="metric-title">Poor visibility</div>
+        <div class="metric-copy">Limited tracking, black-box processing, delayed updates, and reactive communication.</div>
+      </div>
+      <div class="metric">
+        <div class="metric-number">04</div>
+        <div class="metric-title">Weak guidance</div>
+        <div class="metric-copy">Advisors lacked step-by-step help, contextual education, and confidence-building support.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="process">
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <h2>Approach</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="phase-grid reveal">
+      <div class="phase">
+        <div class="phase-no">01 · Discover</div>
+        <div class="phase-title">Understand the ecosystem</div>
+        <div class="phase-copy">Reviewed advisor journeys, service blueprints, pain point inventories, and digital concepts across onboarding, sales, servicing, and post-sale support.</div>
+      </div>
+      <div class="phase">
+        <div class="phase-no">02 · Define</div>
+        <div class="phase-title">Synthesize the friction</div>
+        <div class="phase-copy">Grouped recurring issues into themes like navigation, communication, support, manual work, lack of visibility, and fragmented tooling.</div>
+      </div>
+      <div class="phase">
+        <div class="phase-no">03 · Design</div>
+        <div class="phase-title">Frame opportunity areas</div>
+        <div class="phase-copy">Translated pain points into opportunity statements and initiative directions that could improve both the advisor and operational experience.</div>
+      </div>
+      <div class="phase">
+        <div class="phase-no">04 · Deliver</div>
+        <div class="phase-title">Shape a future-state story</div>
+        <div class="phase-copy">Structured the work into a clear case study narrative with goals, design principles, initiatives, and an integrated experience vision.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="principles">
+    <div class="section-header">
+      <span class="section-num">04</span>
+      <h2>Design principles</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="step-grid reveal">
+      <div class="step">
+        <div class="step-no">Principle 01</div>
+        <div class="step-title">Make the journey feel connected</div>
+        <div class="step-copy">Reduce jumping between tools, repeated sign-ins, and re-entering the same information across systems.</div>
+      </div>
+      <div class="step">
+        <div class="step-no">Principle 02</div>
+        <div class="step-title">Replace uncertainty with visibility</div>
+        <div class="step-copy">Use confirmations, trackers, alerts, and next-step guidance so advisors always know what is happening.</div>
+      </div>
+      <div class="step">
+        <div class="step-no">Principle 03</div>
+        <div class="step-title">Guide, don’t overwhelm</div>
+        <div class="step-copy">Break complex processes into guided steps with inline help, training, and validation at the moment of need.</div>
+      </div>
+      <div class="step">
+        <div class="step-no">Principle 04</div>
+        <div class="step-title">Design for confidence</div>
+        <div class="step-copy">Help advisors feel prepared, informed, and supported so they can serve clients with greater confidence.</div>
+      </div>
+      <div class="step">
+        <div class="step-no">Principle 05</div>
+        <div class="step-title">Reduce manual effort</div>
+        <div class="step-copy">Pre-fill data, standardize forms, remove duplicate steps, and simplify backstage dependencies wherever possible.</div>
+      </div>
+      <div class="step">
+        <div class="step-no">Principle 06</div>
+        <div class="step-title">Create one Manulife experience</div>
+        <div class="step-copy">Move toward a holistic advisor ecosystem that feels consistent across products, touchpoints, and stages of the journey.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="initiatives">
+    <div class="section-header">
+      <span class="section-num">05</span>
+      <h2>Key initiatives</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="initiative-grid reveal">
+      <div class="initiative">
+        <div class="eyebrow">01</div>
+        <div class="initiative-title">Integrated advisor dashboard</div>
+        <div class="initiative-copy">A role-based home that brings together status, notifications, opportunities, renewals, claims, support, and business insights in one place.</div>
+      </div>
+      <div class="initiative">
+        <div class="eyebrow">02</div>
+        <div class="initiative-title">Unified tools and single entry point</div>
+        <div class="initiative-copy">Connect illustrations, applications, product information, forms, tracking, and servicing into a coherent workflow instead of isolated destinations.</div>
+      </div>
+      <div class="initiative">
+        <div class="eyebrow">03</div>
+        <div class="initiative-title">Guided smart forms</div>
+        <div class="initiative-copy">Use dynamic validation, contextual prompts, prefilled data, and real-time error prevention to reduce NIGOs and submission friction.</div>
+      </div>
+      <div class="initiative">
+        <div class="eyebrow">04</div>
+        <div class="initiative-title">Transparent application and request tracking</div>
+        <div class="initiative-copy">Introduce a tracker experience with confirmations, milestones, alerts, and next-step guidance for submitted business and in-force changes.</div>
+      </div>
+      <div class="initiative">
+        <div class="eyebrow">05</div>
+        <div class="initiative-title">Contextual onboarding and learning</div>
+        <div class="initiative-copy">Support new and existing advisors with interactive onboarding, just-in-time education, tutorials, CE content, and embedded best practices.</div>
+      </div>
+      <div class="initiative">
+        <div class="eyebrow">06</div>
+        <div class="initiative-title">Smarter search and discoverability</div>
+        <div class="initiative-copy">Improve access to forms, product content, and support through predictive search, filters, AI-guided help, and better information architecture.</div>
+      </div>
+      <div class="initiative">
+        <div class="eyebrow">07</div>
+        <div class="initiative-title">Proactive communications</div>
+        <div class="initiative-copy">Move from reactive service to timely updates, alerts, reminders, and milestone-based communications across the advisor lifecycle.</div>
+      </div>
+      <div class="initiative">
+        <div class="eyebrow">08</div>
+        <div class="initiative-title">Data-informed opportunity engine</div>
+        <div class="initiative-copy">Surface cross-sell opportunities, upcoming maturities, at-risk clients, and relevant recommendations based on advisor and client context.</div>
+      </div>
+      <div class="initiative">
+        <div class="eyebrow">09</div>
+        <div class="initiative-title">Continuous feedback loop</div>
+        <div class="initiative-copy">Create visible ways to capture advisor feedback, prioritize issues, communicate progress, and involve advisors in shaping future improvements.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="impact">
+    <div class="section-header">
+      <span class="section-num">06</span>
+      <h2>Expected impact</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="summary-grid reveal">
+      <div class="card">
+        <div class="eyebrow">Advisor value</div>
+        <h3>A simpler, more confident way of doing business</h3>
+        <div class="list">
+          <div class="list-item"><strong>Less friction</strong> across discovery, application, servicing, and post-sale moments.</div>
+          <div class="list-item"><strong>Better visibility</strong> into what is happening, what is missing, and what comes next.</div>
+          <div class="list-item"><strong>Faster completion</strong> with less manual entry and fewer preventable errors.</div>
+          <div class="list-item"><strong>Stronger trust</strong> in Manulife as a partner that supports advisor success.</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="eyebrow">Business value</div>
+        <h3>A more scalable service ecosystem</h3>
+        <div class="list">
+          <div class="list-item"><strong>Reduced call volume</strong> by improving self-serve clarity and proactive communication.</div>
+          <div class="list-item"><strong>Lower operational burden</strong> through fewer handoffs, fewer NIGOs, and better digital completion.</div>
+          <div class="list-item"><strong>Higher adoption</strong> of tools that better align with real advisor workflows.</div>
+          <div class="list-item"><strong>Improved retention and growth</strong> by making Manulife harder to leave and easier to expand with.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="banner reveal" style="margin-top: 28px;">
+      <div class="quote">The core shift was not just improving screens. It was redefining the advisor experience from a set of <em>disconnected transactions</em> into a more <em>cohesive service relationship</em>.</div>
+    </div>
+  </section>
+
+  <footer>
+    <span class="footer-copy">© 2026 Vijayant Verma — Advisor Journey Case Study</span>
+    <a class="footer-back" href="#hero">Back to top ↑</a>
+  </footer>
+
+  <script>
+    const cursor = document.getElementById('cursor');
+    const ring = document.getElementById('cursorRing');
+    let rx = 0, ry = 0;
+
+    document.addEventListener('mousemove', e => {
+      if (!cursor || !ring) return;
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+      rx += (e.clientX - rx) * 0.12;
+      ry += (e.clientY - ry) * 0.12;
+      ring.style.left = rx + 'px';
+      ring.style.top = ry + 'px';
+    });
+
+    (function loop() {
+      if (ring) {
+        requestAnimationFrame(() => {
+          ring.style.left = rx + 'px';
+          ring.style.top = ry + 'px';
+          loop();
+        });
+      }
+    })();
+
+    document.querySelectorAll('a, button, .initiative, .phase, .step, .panel-card').forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        if (!cursor || !ring) return;
+        cursor.style.width = '16px';
+        cursor.style.height = '16px';
+        cursor.style.background = 'var(--accent)';
+        ring.style.width = '48px';
+        ring.style.height = '48px';
+      });
+      el.addEventListener('mouseleave', () => {
+        if (!cursor || !ring) return;
+        cursor.style.width = '8px';
+        cursor.style.height = '8px';
+        cursor.style.background = 'var(--ink)';
+        ring.style.width = '32px';
+        ring.style.height = '32px';
+      });
+    });
+
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.1 });
+
+    reveals.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
 
