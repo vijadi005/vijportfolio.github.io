@@ -430,6 +430,18 @@
     }
 
     .summary-grid .card:first-child { background: var(--soft); }
+    .icon {
+  width: 25px; /* Adjust size as needed */
+  height: 25px; /* Adjust size as needed */
+  vertical-align: middle; /* Aligns the icon with adjacent text */
+  margin-right: 6px; /* Adds space between the icon and text */
+}
+
+.icon-container {
+  /* ensures elements inside align correctly */
+  display: flex; 
+  align-items: center;
+}
 
     footer {
       padding: 32px 52px;
@@ -510,8 +522,11 @@
   <section id="hero">
     <div class="hero-left">
       <div class="hero-eyebrow">Case Study</div>
-      <h1>Integrated Insurance <em>Hub</em></h1><br>
-      <img src="caseimages/pdf.png" alt="View PDF"></br>
+      <h1>Integrated Insurance <em>Hub</em></h1>
+      <div class="icon-container">
+  <img src="caseimages/pdf.png" alt="View PDF">
+</div>
+      
       <div class="hero-subtitle">Designing a connected advisor experience across onboarding, sales, servicing, and growth.</div>
       <p class="hero-desc">
         This case study translates a complex advisor ecosystem into a clear, premium portfolio narrative. It focuses on the fragmented insurance and wealth advisor experience, surfacing business goals, advisor objectives, systemic pain points, service opportunities, and a forward-looking set of key initiatives for an integrated digital journey.
