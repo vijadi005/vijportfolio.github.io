@@ -1,1 +1,905 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Integrated Insurance Hub — Case Study</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
+  <style>
+    /* ── Reset & base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #f5f3ef;
+      --surface:   #ffffff;
+      --surface2:  #ede9e2;
+      --border:    rgba(0,0,0,0.1);
+      --text:      #2a2520;
+      --muted:     #7a7068;
+      --accent:    #8a6830;
+      --accent2:   #a07830;
+      --white:     #1a1410;
+      --serif:     'EB Garamond', Georgia, serif;
+      --sans:      'DM Sans', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Back link ── */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 20px 48px;
+      font-size: 13px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: var(--text); }
+    .back-link::before { content: '←'; }
+
+    /* ── Nav ── */
+    .case-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(245,243,239,0.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .case-nav ul {
+      display: flex;
+      gap: 0;
+      list-style: none;
+      padding: 0 48px;
+      overflow-x: auto;
+    }
+    .case-nav li a {
+      display: block;
+      padding: 16px 20px;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+      white-space: nowrap;
+    }
+    .case-nav li a:hover { color: var(--accent2); }
+
+    /* ── Hero ── */
+    .hero {
+      position: relative;
+      min-height: 72vh;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+      background: #f0ece4;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 70% 40%, rgba(160,120,48,0.07) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 80% at 10% 80%, rgba(160,120,48,0.04) 0%, transparent 55%),
+        repeating-linear-gradient(
+          90deg,
+          transparent,
+          transparent 79px,
+          rgba(0,0,0,0.025) 80px
+        ),
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 79px,
+          rgba(0,0,0,0.025) 80px
+        );
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 80px 48px 72px;
+      max-width: 900px;
+    }
+    .hero-eyebrow {
+      font-family: var(--sans);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 28px;
+    }
+    .hero-eyebrow span {
+      display: inline-block;
+      margin: 0 10px;
+      color: var(--muted);
+    }
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 32px;
+    }
+    .hero-tag {
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border: 1px solid rgba(138,104,48,0.3);
+      color: var(--accent);
+      border-radius: 2px;
+    }
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(42px, 6vw, 76px);
+      font-weight: 400;
+      line-height: 1.1;
+      color: var(--white);
+      letter-spacing: -0.01em;
+      margin-bottom: 28px;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--accent2);
+    }
+    .hero-sub {
+      font-size: 17px;
+      color: var(--muted);
+      max-width: 600px;
+      line-height: 1.65;
+      margin-bottom: 40px;
+    }
+    .hero-pdf-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid rgba(138,104,48,0.4);
+      color: var(--accent2);
+      padding: 10px 22px;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+      border-radius: 2px;
+    }
+    .hero-pdf-link:hover { background: rgba(138,104,48,0.08); }
+    .hero-pdf-link img { width: 18px; height: 18px; opacity: 0.85; }
+
+    /* ── Snapshot strip ── */
+    .snapshot {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .snapshot-item {
+      padding: 36px 40px;
+      border-right: 1px solid var(--border);
+    }
+    .snapshot-item:last-child { border-right: none; }
+    .snapshot-label {
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    .snapshot-value {
+      font-family: var(--serif);
+      font-size: 18px;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+    .snapshot-detail {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* ── Main layout ── */
+    .case-body {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+
+    /* ── Section ── */
+    .case-section {
+      padding: 100px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .section-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 40px;
+      margin-bottom: 64px;
+    }
+    .section-number {
+      font-family: var(--sans);
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      color: var(--accent);
+      padding-top: 14px;
+      min-width: 32px;
+    }
+    .section-title {
+      font-family: var(--serif);
+      font-size: clamp(30px, 4vw, 48px);
+      font-weight: 400;
+      line-height: 1.15;
+      color: var(--white);
+    }
+    .section-title em {
+      font-style: italic;
+      color: var(--accent2);
+    }
+
+    /* ── Sub-heading ── */
+    .sub-label {
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+    h3.sub-head {
+      font-family: var(--serif);
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 20px;
+    }
+    h3.sub-head em { font-style: italic; color: var(--accent2); }
+
+    /* ── Two-col layout ── */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+    }
+    .three-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 48px;
+    }
+
+    /* ── Body copy ── */
+    p {
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.75;
+      margin-bottom: 18px;
+    }
+    p strong { color: var(--white); font-weight: 500; }
+    p:last-child { margin-bottom: 0; }
+
+    /* ── Stat callout ── */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      margin: 48px 0;
+      border: 1px solid var(--border);
+    }
+    .stat-cell {
+      background: var(--surface);
+      padding: 36px 32px;
+    }
+    .stat-number {
+      font-family: var(--serif);
+      font-size: 46px;
+      font-weight: 400;
+      color: var(--accent2);
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+    .stat-label {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* ── Principle cards ── */
+    .principle-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+    .principle-card {
+      background: var(--surface);
+      padding: 36px 32px;
+      transition: background 0.2s;
+    }
+    .principle-card:hover { background: var(--surface2); }
+    .principle-num {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+    .principle-title {
+      font-family: var(--serif);
+      font-size: 18px;
+      color: var(--white);
+      margin-bottom: 14px;
+      line-height: 1.3;
+    }
+    .principle-body {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    /* ── Initiative cards ── */
+    .initiative-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+    .initiative-item {
+      background: var(--surface);
+      padding: 32px 40px;
+      display: grid;
+      grid-template-columns: 36px 1fr auto;
+      gap: 24px;
+      align-items: start;
+      transition: background 0.2s;
+    }
+    .initiative-item:hover { background: var(--surface2); }
+    .init-num {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      padding-top: 4px;
+    }
+    .init-content h4 {
+      font-family: var(--serif);
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+    .init-content p {
+      font-size: 14px;
+      color: var(--muted);
+      margin: 0;
+      line-height: 1.6;
+    }
+    .init-tag {
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 2px;
+      white-space: nowrap;
+      margin-top: 4px;
+    }
+    .tag-high {
+      background: rgba(138,104,48,0.1);
+      color: var(--accent2);
+      border: 1px solid rgba(138,104,48,0.25);
+    }
+
+    /* ── Process steps ── */
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      margin-top: 48px;
+    }
+    .process-step {
+      background: var(--surface);
+      padding: 36px 28px;
+    }
+    .step-label {
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+    .step-title {
+      font-family: var(--serif);
+      font-size: 18px;
+      color: var(--white);
+      margin-bottom: 14px;
+      line-height: 1.3;
+    }
+    .step-body {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* ── Pain point chips ── */
+    .pain-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      margin-top: 48px;
+    }
+    .pain-card {
+      background: var(--surface);
+      padding: 32px 36px;
+    }
+    .pain-num {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+    .pain-title {
+      font-family: var(--serif);
+      font-size: 20px;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+    .pain-body {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* ── Impact columns ── */
+    .impact-col .impact-head {
+      font-family: var(--serif);
+      font-size: 24px;
+      color: var(--white);
+      margin-bottom: 28px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+    .impact-col .impact-head em { font-style: italic; color: var(--accent2); }
+    .impact-item {
+      margin-bottom: 20px;
+    }
+    .impact-item p { margin: 0; font-size: 15px; }
+
+    /* ── Closing statement ── */
+    .closing-statement {
+      padding: 100px 0;
+      text-align: center;
+    }
+    .closing-statement blockquote {
+      font-family: var(--serif);
+      font-size: clamp(22px, 3.5vw, 36px);
+      font-weight: 400;
+      line-height: 1.45;
+      color: var(--white);
+      max-width: 760px;
+      margin: 0 auto 20px;
+    }
+    .closing-statement blockquote em { color: var(--accent2); font-style: italic; }
+
+    /* ── Footer ── */
+    .case-footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .case-footer p { font-size: 13px; color: var(--muted); margin: 0; }
+    .case-footer a { color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .case-footer a:hover { color: var(--accent2); }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .case-nav ul, .back-link { padding-left: 24px; padding-right: 24px; }
+      .hero-content, .case-body, .case-footer { padding-left: 24px; padding-right: 24px; }
+      .snapshot { grid-template-columns: 1fr 1fr; }
+      .snapshot-item:nth-child(2) { border-right: none; }
+      .two-col, .three-col { grid-template-columns: 1fr; gap: 40px; }
+      .stats-row { grid-template-columns: 1fr; }
+      .principle-grid { grid-template-columns: 1fr 1fr; }
+      .process-steps { grid-template-columns: 1fr 1fr; }
+      .pain-grid { grid-template-columns: 1fr; }
+      .initiative-item { grid-template-columns: 36px 1fr; }
+      .init-tag { display: none; }
+    }
+    @media (max-width: 600px) {
+      .snapshot { grid-template-columns: 1fr; }
+      .snapshot-item { border-right: none; border-bottom: 1px solid var(--border); }
+      .principle-grid, .process-steps { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Back to portfolio -->
+  <a href="https://vijadi005.github.io/vijportfolio.github.io/" class="back-link">Back to Portfolio</a>
+
+  <!-- Sticky nav -->
+  <nav class="case-nav" aria-label="Case study sections">
+    <ul>
+      <li><a href="#overview">Overview</a></li>
+      <li><a href="#challenge">Challenge</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#principles">Principles</a></li>
+      <li><a href="#initiatives">Initiatives</a></li>
+      <li><a href="#impact">Impact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero" id="hero">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Case Study <span>·</span> 2025</p>
+      <div class="hero-tags">
+        <span class="hero-tag">Service Design</span>
+        <span class="hero-tag">Journey Mapping</span>
+        <span class="hero-tag">Ecosystem Design</span>
+        <span class="hero-tag">Manulife · IIC</span>
+      </div>
+      <h1>Integrated Insurance <em>Hub</em></h1>
+      <a href="https://vijadi005.github.io/vijportfolio.github.io/casestudies/caseimages/integrated insurance hub.pdf"
+         class="hero-pdf-link" target="_blank" rel="noopener">
+        <img src="https://vijadi005.github.io/vijportfolio.github.io/casestudies/caseimages/pdf.png" alt="PDF icon" />
+        View PDF
+      </a>
+      <p class="hero-sub" style="margin-top:28px;">
+        Designing a connected advisor experience across onboarding, sales, servicing, and growth — reframing a fragmented ecosystem into a cohesive, digital-first service relationship.
+      </p>
+    </div>
+  </header>
+
+  <!-- Case snapshot -->
+  <div class="snapshot">
+    <div class="snapshot-item">
+      <p class="snapshot-label">Focus</p>
+      <p class="snapshot-value">E2E</p>
+      <p class="snapshot-detail">Advisor journey across discovery, onboarding, application, servicing, and growth.</p>
+    </div>
+    <div class="snapshot-item">
+      <p class="snapshot-label">Lens</p>
+      <p class="snapshot-value">UX + Service</p>
+      <p class="snapshot-detail">Journey mapping, service blueprinting, ecosystem design, and roadmap thinking.</p>
+    </div>
+    <div class="snapshot-item">
+      <p class="snapshot-label">Core Problem</p>
+      <p class="snapshot-value">Fragmentation</p>
+      <p class="snapshot-detail">Too many tools, manual handoffs, unclear status, and inconsistent support.</p>
+    </div>
+    <div class="snapshot-item">
+      <p class="snapshot-label">Outcome</p>
+      <p class="snapshot-value">North Star</p>
+      <p class="snapshot-detail">A unified, proactive, trackable, and advisor-first digital ecosystem.</p>
+    </div>
+  </div>
+
+  <!-- Main content -->
+  <main class="case-body">
+
+    <!-- 01 Overview -->
+    <section class="case-section" id="overview">
+      <div class="section-header">
+        <span class="section-number">01</span>
+        <h2 class="section-title">Context &amp; the <em>Imperative</em></h2>
+      </div>
+
+      <div class="two-col">
+        <div>
+          <p class="sub-label">Context</p>
+          <h3 class="sub-head">Why this work mattered</h3>
+          <p>
+            Advisors were navigating a <strong>fragmented landscape of portals, tools, forms, support channels, and manual processes.</strong>
+            This increased effort, introduced avoidable errors, and weakened confidence in Manulife as an easy partner to do business with.
+          </p>
+          <p>
+            <strong>Business need:</strong> Improve ease of doing business, strengthen advisor retention, and support growth across insurance and wealth journeys.
+          </p>
+          <p>
+            <strong>User need:</strong> Reduce complexity, get faster answers, complete tasks with confidence, and stay informed without constant follow-up.
+          </p>
+          <p>
+            <strong>Design opportunity:</strong> Reframe disconnected tools into a coherent end-to-end service experience.
+          </p>
+        </div>
+        <div>
+          <p class="sub-label">My Role</p>
+          <h3 class="sub-head">Service design &amp; experience strategy</h3>
+          <p><strong>Mapped</strong> advisor journeys, tasks, ecosystems, and supporting backstage processes.</p>
+          <p><strong>Synthesized</strong> pain points, patterns, and opportunity areas across advisor-facing interactions.</p>
+          <p><strong>Defined</strong> future-state concepts, principles, and initiatives for a more seamless digital advisor experience.</p>
+          <p><strong>Framed</strong> the work as a case study narrative suitable for a portfolio and stakeholder storytelling.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 Challenge -->
+    <section class="case-section" id="challenge">
+      <div class="section-header">
+        <span class="section-number">02</span>
+        <h2 class="section-title">The <em>Challenge</em></h2>
+      </div>
+
+      <p style="font-family: var(--serif); font-size: clamp(18px, 2.2vw, 26px); color: var(--white); max-width: 740px; line-height: 1.5; margin-bottom: 60px;">
+        How might we create an <em style="color: var(--accent2);">integrated advisor journey</em> that reduces friction, improves confidence, and helps advisors bring in, manage, and grow business more effectively?
+      </p>
+
+      <div class="two-col" style="margin-bottom: 64px;">
+        <div>
+          <p class="sub-label">Business goals</p>
+          <h3 class="sub-head">What the organization needed</h3>
+          <p><strong>Increase adoption</strong> of digital tools and reduce dependence on manual, paper-based workarounds.</p>
+          <p><strong>Reduce NIGOs and processing errors</strong> through better guidance, validation, and simpler workflows.</p>
+          <p><strong>Improve advisor satisfaction</strong> by creating a more intuitive, transparent, and responsive experience.</p>
+          <p><strong>Enable growth</strong> through better product discovery, smarter guidance, and improved cross-sell opportunities.</p>
+          <p><strong>Protect relationships</strong> so advisors are less likely to shift business to competitors.</p>
+        </div>
+        <div>
+          <p class="sub-label">Advisor objectives</p>
+          <h3 class="sub-head">What advisors were trying to do</h3>
+          <p><strong>Look competent in front of clients</strong> and follow through on promises without delays or uncertainty.</p>
+          <p><strong>Find the right tools quickly</strong> without navigating multiple systems and repeated logins.</p>
+          <p><strong>Submit business correctly the first time</strong> and avoid preventable back-and-forth.</p>
+          <p><strong>Track status clearly</strong> for applications, requests, servicing, and in-force changes.</p>
+          <p><strong>Stay informed and supported</strong> through onboarding, training, service, and ongoing business growth.</p>
+        </div>
+      </div>
+
+      <div class="pain-grid">
+        <div class="pain-card">
+          <p class="pain-num">01</p>
+          <p class="pain-title">Fragmented ecosystem</p>
+          <p class="pain-body">Multiple portals, duplicate tools, inconsistent navigation, and disconnected experiences across every stage of the advisor journey.</p>
+        </div>
+        <div class="pain-card">
+          <p class="pain-num">02</p>
+          <p class="pain-title">Manual processes</p>
+          <p class="pain-body">Too many handoffs, repeated data entry, unclear ownership, and paper fallback eroding advisor productivity and confidence.</p>
+        </div>
+        <div class="pain-card">
+          <p class="pain-num">03</p>
+          <p class="pain-title">Poor visibility</p>
+          <p class="pain-body">Limited tracking, black-box processing, delayed updates, and reactive communication leaving advisors in the dark.</p>
+        </div>
+        <div class="pain-card">
+          <p class="pain-num">04</p>
+          <p class="pain-title">Weak guidance</p>
+          <p class="pain-body">Advisors lacked step-by-step help, contextual education, and confidence-building support at critical moments of need.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 Process -->
+    <section class="case-section" id="process">
+      <div class="section-header">
+        <span class="section-number">03</span>
+        <h2 class="section-title"><em>Approach</em></h2>
+      </div>
+
+      <div class="process-steps">
+        <div class="process-step">
+          <p class="step-label">01 · Discover</p>
+          <p class="step-title">Understand the ecosystem</p>
+          <p class="step-body">Reviewed advisor journeys, service blueprints, pain point inventories, and digital concepts across onboarding, sales, servicing, and post-sale support.</p>
+        </div>
+        <div class="process-step">
+          <p class="step-label">02 · Define</p>
+          <p class="step-title">Synthesize the friction</p>
+          <p class="step-body">Grouped recurring issues into themes like navigation, communication, support, manual work, lack of visibility, and fragmented tooling.</p>
+        </div>
+        <div class="process-step">
+          <p class="step-label">03 · Design</p>
+          <p class="step-title">Frame opportunity areas</p>
+          <p class="step-body">Translated pain points into opportunity statements and initiative directions that could improve both the advisor and operational experience.</p>
+        </div>
+        <div class="process-step">
+          <p class="step-label">04 · Deliver</p>
+          <p class="step-title">Shape a future-state story</p>
+          <p class="step-body">Structured the work into a clear case study narrative with goals, design principles, initiatives, and an integrated experience vision.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 Principles -->
+    <section class="case-section" id="principles">
+      <div class="section-header">
+        <span class="section-number">04</span>
+        <h2 class="section-title">Design <em>Principles</em></h2>
+      </div>
+
+      <div class="principle-grid">
+        <div class="principle-card">
+          <p class="principle-num">Principle 01</p>
+          <p class="principle-title">Make the journey feel connected</p>
+          <p class="principle-body">Reduce jumping between tools, repeated sign-ins, and re-entering the same information across systems.</p>
+        </div>
+        <div class="principle-card">
+          <p class="principle-num">Principle 02</p>
+          <p class="principle-title">Replace uncertainty with visibility</p>
+          <p class="principle-body">Use confirmations, trackers, alerts, and next-step guidance so advisors always know what is happening.</p>
+        </div>
+        <div class="principle-card">
+          <p class="principle-num">Principle 03</p>
+          <p class="principle-title">Guide, don't overwhelm</p>
+          <p class="principle-body">Break complex processes into guided steps with inline help, training, and validation at the moment of need.</p>
+        </div>
+        <div class="principle-card">
+          <p class="principle-num">Principle 04</p>
+          <p class="principle-title">Design for confidence</p>
+          <p class="principle-body">Help advisors feel prepared, informed, and supported so they can serve clients with greater confidence.</p>
+        </div>
+        <div class="principle-card">
+          <p class="principle-num">Principle 05</p>
+          <p class="principle-title">Reduce manual effort</p>
+          <p class="principle-body">Pre-fill data, standardize forms, remove duplicate steps, and simplify backstage dependencies wherever possible.</p>
+        </div>
+        <div class="principle-card">
+          <p class="principle-num">Principle 06</p>
+          <p class="principle-title">Create one Manulife experience</p>
+          <p class="principle-body">Move toward a holistic advisor ecosystem that feels consistent across products, touchpoints, and stages of the journey.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 Initiatives -->
+    <section class="case-section" id="initiatives">
+      <div class="section-header">
+        <span class="section-number">05</span>
+        <h2 class="section-title">Key <em>Initiatives</em></h2>
+      </div>
+
+      <div class="initiative-list">
+        <div class="initiative-item">
+          <span class="init-num">01</span>
+          <div class="init-content">
+            <h4>Integrated advisor dashboard</h4>
+            <p>A role-based home that brings together status, notifications, opportunities, renewals, claims, support, and business insights in one place.</p>
+          </div>
+          <span class="init-tag tag-high">High Priority</span>
+        </div>
+        <div class="initiative-item">
+          <span class="init-num">02</span>
+          <div class="init-content">
+            <h4>Unified tools and single entry point</h4>
+            <p>Connect illustrations, applications, product information, forms, tracking, and servicing into a coherent workflow instead of isolated destinations.</p>
+          </div>
+          <span class="init-tag tag-high">High Priority</span>
+        </div>
+        <div class="initiative-item">
+          <span class="init-num">03</span>
+          <div class="init-content">
+            <h4>Guided smart forms</h4>
+            <p>Use dynamic validation, contextual prompts, prefilled data, and real-time error prevention to reduce NIGOs and submission friction.</p>
+          </div>
+          <span class="init-tag tag-high">High Priority</span>
+        </div>
+        <div class="initiative-item">
+          <span class="init-num">04</span>
+          <div class="init-content">
+            <h4>Transparent application and request tracking</h4>
+            <p>Introduce a tracker experience with confirmations, milestones, alerts, and next-step guidance for submitted business and in-force changes.</p>
+          </div>
+          <span class="init-tag tag-high">High Priority</span>
+        </div>
+        <div class="initiative-item">
+          <span class="init-num">05</span>
+          <div class="init-content">
+            <h4>Contextual onboarding and learning</h4>
+            <p>Support new and existing advisors with interactive onboarding, just-in-time education, tutorials, CE content, and embedded best practices.</p>
+          </div>
+          <span class="init-tag tag-high">High Priority</span>
+        </div>
+        <div class="initiative-item">
+          <span class="init-num">06</span>
+          <div class="init-content">
+            <h4>Smarter search and discoverability</h4>
+            <p>Improve access to forms, product content, and support through predictive search, filters, AI-guided help, and better information architecture.</p>
+          </div>
+          <span class="init-tag tag-high">High Priority</span>
+        </div>
+        <div class="initiative-item">
+          <span class="init-num">07</span>
+          <div class="init-content">
+            <h4>Proactive communications</h4>
+            <p>Move from reactive service to timely updates, alerts, reminders, and milestone-based communications across the advisor lifecycle.</p>
+          </div>
+          <span class="init-tag tag-high">High Priority</span>
+        </div>
+        <div class="initiative-item">
+          <span class="init-num">08</span>
+          <div class="init-content">
+            <h4>Data-informed opportunity engine</h4>
+            <p>Surface cross-sell opportunities, upcoming maturities, at-risk clients, and relevant recommendations based on advisor and client context.</p>
+          </div>
+          <span class="init-tag tag-high">2027</span>
+        </div>
+        <div class="initiative-item">
+          <span class="init-num">09</span>
+          <div class="init-content">
+            <h4>Continuous feedback loop</h4>
+            <p>Create visible ways to capture advisor feedback, prioritize issues, communicate progress, and involve advisors in shaping future improvements.</p>
+          </div>
+          <span class="init-tag tag-high">2027</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06 Impact -->
+    <section class="case-section" id="impact">
+      <div class="section-header">
+        <span class="section-number">06</span>
+        <h2 class="section-title">Expected <em>Impact</em></h2>
+      </div>
+
+      <div class="two-col">
+        <div class="impact-col">
+          <h3 class="impact-head">Advisor value — <em>a simpler, more confident way of doing business</em></h3>
+          <div class="impact-item">
+            <p><strong>Less friction</strong> across discovery, application, servicing, and post-sale moments.</p>
+          </div>
+          <div class="impact-item">
+            <p><strong>Better visibility</strong> into what is happening, what is missing, and what comes next.</p>
+          </div>
+          <div class="impact-item">
+            <p><strong>Faster completion</strong> with less manual entry and fewer preventable errors.</p>
+          </div>
+          <div class="impact-item">
+            <p><strong>Stronger trust</strong> in Manulife as a partner that supports advisor success.</p>
+          </div>
+        </div>
+        <div class="impact-col">
+          <h3 class="impact-head">Business value — <em>a more scalable service ecosystem</em></h3>
+          <div class="impact-item">
+            <p><strong>Reduced call volume</strong> by improving self-serve clarity and proactive communication.</p>
+          </div>
+          <div class="impact-item">
+            <p><strong>Lower operational burden</strong> through fewer handoffs, fewer NIGOs, and better digital completion.</p>
+          </div>
+          <div class="impact-item">
+            <p><strong>Higher adoption</strong> of tools that better align with real advisor workflows.</p>
+          </div>
+          <div class="impact-item">
+            <p><strong>Improved retention and growth</strong> by making Manulife harder to leave and easier to expand with.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Closing -->
+    <div class="closing-statement">
+      <blockquote>
+        The core shift was not just improving screens — it was redefining the advisor experience from a set of <em>disconnected transactions</em> into a more <em>cohesive service relationship.</em>
+      </blockquote>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="case-footer">
+    <p>© 2026 Vijayant Verma — Advisor Journey Case Study</p>
+    <a href="#hero">↑ Back to top</a>
+  </footer>
+
+</body>
+</html>
