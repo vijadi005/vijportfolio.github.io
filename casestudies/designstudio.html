@@ -458,6 +458,18 @@
     .hero-meta-row { flex-direction: column; gap: 20px; }
     .hero-meta-item { border-right: none; border-bottom: 1px solid var(--line); padding-bottom: 16px; margin-right: 0; }
   }
+  .icon {
+  width: 45px; /* Adjust size as needed */
+  height: 45px; /* Adjust size as needed */
+  vertical-align: middle; /* Aligns the icon with adjacent text */
+  margin-right: 6px; /* Adds space between the icon and text */
+}
+
+.icon-container {
+  /* ensures elements inside align correctly */
+  display: flex; 
+  align-items: center;
+}
 </style>
 </head>
 <body>
@@ -481,6 +493,9 @@
   <div class="hero-left">
     <p class="hero-eyebrow">Product Design · Internal Tooling</p>
     <h1>UI Design<br><em>Studio</em></h1>
+     <div class="icon-container">
+  <a href="caseimages/UI Design Studio_v1.pdf" alt="UI UX Design Studio" target="_blank"><img src="caseimages/pdf.png" alt="View PDF" class="icon"></a>
+</div>
     <p class="hero-desc">
       A centralised portal for distributing reusable UI assets — templates, components, icons, and themes — enabling rapid application development and cutting delivery effort by up to 60%.
     </p>
