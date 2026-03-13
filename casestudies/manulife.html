@@ -228,6 +228,22 @@
                 align-items: center;
                 gap: 14px;
             }
+            .hero-pdf-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid rgba(138,104,48,0.4);
+      color: var(--accent2);
+      padding: 10px 22px;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+      border-radius: 2px;
+    }
+    .hero-pdf-link:hover { background: rgba(138,104,48,0.08); }
+    .hero-pdf-link img { width: 18px; height: 18px; opacity: 0.85; }
 
             .eyebrow::before {
                 content: '';
@@ -940,9 +956,12 @@
                     Mass Market<br/>
                     <em>Journey Roadmap</em>
                 </h1>
-                  <div class="icon-container">
-  <a href="caseimages/integrated insurance hub.pdf" alt="Integrated insurance hub" target="_blank"><img src="caseimages/pdf.png" alt="View PDF" class="icon"></a>
-</div>
+            
+<a href="caseimages/MM - Future State - All Streams Final.pdf"
+         class="hero-pdf-link" target="_blank" rel="noopener">
+        <img src="https://vijadi005.github.io/vijportfolio.github.io/casestudies/caseimages/pdf.png" alt="PDF icon" />
+        View PDF
+      </a>
 
                 <p class="hero-sub">Reimagining advisor and client journeys across Individual Insurance and Guaranteed Wealth — anchoring on a low-touch, digital-first model to capture Canada's $40B protection gap.</p>
                  
