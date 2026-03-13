@@ -151,23 +151,23 @@
     }
 
     /* ── PDF link ── */
-    .pdf-link {
+    .hero-pdf-link {
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      margin-top: 32px;
-      padding: 10px 20px;
+      border: 1px solid rgba(138,104,48,0.4);
+      color: var(--accent2);
+      padding: 10px 22px;
       font-size: 12px;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--accent);
-      border: 1px solid rgba(138,104,48,0.35);
-      border-radius: 2px;
       text-decoration: none;
       transition: background 0.2s, color 0.2s;
+      border-radius: 2px;
     }
-    .pdf-link:hover { background: rgba(138,104,48,0.08); }
-    .pdf-link::before { content: '↗'; font-size: 14px; }
+    .hero-pdf-link:hover { background: rgba(138,104,48,0.08); }
+    .hero-pdf-link img { width: 18px; height: 18px; opacity: 0.85; }
+
 
     /* ── Snapshot strip ── */
     .snapshot {
@@ -445,8 +445,11 @@
         <span class="hero-tag">HCL Technologies</span>
       </div>
       <h1>UI Design <em>Studio</em></h1>
-      <p class="hero-sub">A centralised portal for distributing reusable UI assets — templates, components, icons, and themes — enabling rapid application development and cutting delivery effort by up to 60%.</p>
-      <a class="pdf-link" href="caseimages/UI Design Studio_v1.pdf" target="_blank">View Full Case Study PDF</a>
+     <a href="caseimages/integrated insurance hub.pdf"
+         class="hero-pdf-link" target="_blank" rel="noopener">
+        <img src="https://vijadi005.github.io/vijportfolio.github.io/casestudies/caseimages/pdf.png" alt="PDF icon" />
+        View PDF
+      </a>
     </div>
   </header>
 
