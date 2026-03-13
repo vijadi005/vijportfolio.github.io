@@ -678,15 +678,29 @@
                 .int-grid {
                     grid-template-columns: 1fr;
                 }
+                 .case-nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(245,243,239,0.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .case-nav ul { display: flex; list-style: none; padding: 0 48px; overflow-x: auto; }
+    .case-nav li a {
+      display: block; padding: 16px 20px;
+      font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--muted); text-decoration: none;
+      transition: color 0.2s; white-space: nowrap;
+    }
+    .case-nav li a:hover { color: var(--accent2); }
             }
         </style>
     </head>
     <body>
-        <div class="cursor" id="cursor"></div>
-        <div class="cursor-ring" id="cursorRing"></div>
-        <nav>
+       
+        
            <a class="nav-logo" href="https://vijadi005.github.io/vijportfolio.github.io/">Back to Portfolio</a>
-            <ul class="nav-links">
+            <nav class="case-nav" aria-label="Case study sections">
+                <ul>
                 <li>
                     <a href="#overview">Overview</a>
                 </li>
