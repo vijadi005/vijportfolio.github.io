@@ -39,18 +39,26 @@
 
     /* ── Back link ── */
     .back-link {
+      position: fixed;
+      top: 80px;
+      left: 24px;
+      z-index: 200;
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 20px 48px;
-      font-size: 13px;
-      letter-spacing: 0.06em;
+      padding: 8px 16px;
+      font-size: 12px;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--muted);
       text-decoration: none;
-      transition: color 0.2s;
+      background: rgba(245,243,239,0.9);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(0,0,0,0.1);
+      border-radius: 4px;
+      transition: color 0.2s, background 0.2s;
     }
-    .back-link:hover { color: var(--text); }
+    .back-link:hover { color: var(--accent); background: rgba(245,243,239,1); }
     .back-link::before { content: '←'; }
 
     /* ── Nav ── */
