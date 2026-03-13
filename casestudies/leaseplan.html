@@ -191,7 +191,23 @@
       line-height: 1.55;
     }
     .hero-quote cite { font-size: 12px; color: var(--muted); font-style: normal; letter-spacing: 0.06em; }
-
+/* ── PDF link ── */
+    .hero-pdf-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid rgba(138,104,48,0.4);
+      color: var(--accent2);
+      padding: 10px 22px;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+      border-radius: 2px;
+    }
+    .hero-pdf-link:hover { background: rgba(138,104,48,0.08); }
+    .hero-pdf-link img { width: 18px; height: 18px; opacity: 0.85; }
     /* ── Snapshot strip ── */
     .snapshot {
       display: grid;
@@ -500,6 +516,11 @@
         <span class="hero-tag">HCL Technologies</span>
       </div>
       <h1>LeasePlan <em>Digital</em> Foundation</h1>
+       <a href="caseimages/Leaseplan Digital Foundation v5.pdf"
+         class="hero-pdf-link" target="_blank" rel="noopener">
+        <img src="https://vijadi005.github.io/vijportfolio.github.io/casestudies/caseimages/pdf.png" alt="PDF icon" />
+        View PDF
+      </a>
       <p class="hero-sub">Unifying four fragmented portals into a single mobile-first platform for the world's leading fleet management company — driving retention, cutting costs, and collapsing lead time by 92%.</p>
       <div class="hero-quote">
         <p>"After 4 years with LeasePlan, I'm not sure I actually gained much. The portal didn't work for me, so now I just call or email."</p>
