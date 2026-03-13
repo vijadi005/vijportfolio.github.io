@@ -74,7 +74,34 @@
                 transform: translate(-50%,-50%);
                 transition: width .2s,height .2s,background .2s;
             }
-
+/* ── Nav ── */
+    .case-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(245,243,239,0.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .case-nav ul {
+      display: flex;
+      gap: 0;
+      list-style: none;
+      padding: 0 48px;
+      overflow-x: auto;
+    }
+    .case-nav li a {
+      display: block;
+      padding: 16px 20px;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+      white-space: nowrap;
+    }
+    .case-nav li a:hover { color: var(--accent2); }
             .cur-ring {
                 position: fixed;
                 width: 32px;
@@ -135,7 +162,7 @@
                 display: flex;
                 flex-direction: column;
                 justify-content: flex-end;
-                padding: 0 52px 80px;
+                padding: 40px 80px;
                 position: relative;
                 overflow: hidden;
                 background: #f4e6c9;
@@ -686,6 +713,16 @@
                 border: 1px solid var(--line);
                 padding: 28px;
             }
+            .hero-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 32px; }
+    .hero-tag {
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border: 1px solid rgba(138,104,48,0.3);
+      color: var(--accent);
+      border-radius: 2px;
+    }
 
             .r-label {
                 font-size: 10px;
@@ -841,7 +878,7 @@
         <div class="cur-ring" id="cur-ring"></div>
         <nav>
             <a class="back-link" href="https://vijadi005.github.io/vijportfolio.github.io/">Back to Portfolio</a>
-            <ul class="nav-links">
+            <ul class="case-nav">
                 <li>
                     <a href="#context">Context</a>
                 </li>
@@ -871,13 +908,14 @@
                   <div class="icon-container">
   <a href="caseimages/integrated insurance hub.pdf" alt="Integrated insurance hub" target="_blank"><img src="caseimages/pdf.png" alt="View PDF" class="icon"></a>
 </div>
-                <p class="hero-sub">Reimagining advisor and client journeys across Individual Insurance and Guaranteed Wealth — anchoring on a low-touch, digital-first model to capture Canada's $40B protection gap.</p>
-                 <div class="tags">
-                    <span class="tag">Service Design</span>
-                    <span class="tag">Journey Mapping</span>
-                    <span class="tag">Digital Strategy</span>
-                    <span class="tag">Manulife · IIC</span>
+<div class="hero-tags">
+                    <span class="hero-tag">Service Design</span>
+                    <span class="hero-tag">Journey Mapping</span>
+                    <span class="hero-tag">Digital Strategy</span>
+                    <span class="hero-tag">Manulife · IIC</span>
                 </div> 
+                <p class="hero-sub">Reimagining advisor and client journeys across Individual Insurance and Guaranteed Wealth — anchoring on a low-touch, digital-first model to capture Canada's $40B protection gap.</p>
+                 
             </div>
         </div>
         <div class="page">
